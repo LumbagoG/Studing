@@ -1,0 +1,163 @@
+@import '../mixins/mixin.scss';
+@import '../variables/variables.scss';
+
+
+@import '../components/default.scss';
+
+ul {
+    margin-top: 1em !important;
+}
+
+@import '../components/header.scss';
+
+@import '../components/sidebar.scss';
+
+.main {
+    @include margin($m-l: $sidebar-width);
+    @include flex($f-content: start, $f-items: center, $f-direct: column);
+
+    width: calc(100% - (3vw + 55px));
+
+    &__container {
+        @include margin($m-t: 4em);
+        @include flex(
+            $f-display: inline-flex,
+            $f-content: center,
+            $f-items: center,
+            $f-direct: row
+        );
+
+        @include respond-to('large'){
+            @include flex(
+                $f-display: inherit,
+                $f-content: inherit,
+                $f-items: inherit,
+                $f-direct: column !important
+            );
+        }
+
+        width: 90%;
+
+        &_picture {
+            @include flex($f-content: center, $f-items: center);
+
+            &_img {
+                width: calc(10vw + 8em);
+            }
+        }
+
+        &_col:first-child {
+            flex-grow: 1;
+
+            &>.main__container_title>.main__text_small,
+            &>.main__container_title>.main__text_big {
+                font-family: 'Sansation Light';
+            }
+
+            &>.main__container_title>.main__text_small {
+                font-size: calc(0.2vw + 1rem);
+                font-weight: 200 !important;
+            }
+
+            &>.main__container_title>.main__text_big {
+                width: 60%;
+                font-size: calc(0.6vw + 1.6rem);
+                font-weight: 600 !important;
+            }
+
+
+        }
+
+        &_col:last-child {
+            flex-grow: 2;
+        }
+
+        &_row{
+            @include flex(
+                $f-display: inline-flex,
+                $f-content: flex-start,
+                $f-items: center,
+                $f-direct: row, 
+                $f-wrap: wrap
+            );
+
+            text-align: center;
+
+            &>.main__container_title>.main__text_small,
+            &>.main__container_title>.main__text_big {
+                font-family: 'Sansation Light';
+            }
+
+            &>.main__container_title>.main__text_small {
+                font-size: calc(0.2vw + 1rem);
+                font-weight: 200 !important;
+            }
+
+            &>.main__container_title>.main__text_big {
+                width: 100%;
+                font-size: calc(0.6vw + 1.6rem);
+                font-weight: 600 !important;
+                font-family: 'Roboto';
+                text-align: center;
+            }
+
+            & > .main__container__card{
+                @include flex(
+                    $f-display: flex,
+                    $f-content: center,
+                    $f-items: center,
+                    $f-direct: column, 
+                    $f-wrap: nowrap
+                );
+
+                width: 400px;
+            }
+        }
+
+    }
+
+    & .next{
+        @include margin($m-t: calc(5em + 20vh));
+        @include flex(
+            $f-display: flex,
+            $f-content: center,
+            $f-items: center,
+            $f-direct: column
+        );
+
+        width: 100%;
+        background-color: $bg-grey;
+        padding: calc(2em + 2vh);
+
+        // &_row{
+            
+        // }
+
+        & .main__container__links{
+            @include flex(
+                $f-display: inline-flex,
+                $f-content: center,
+                $f-items: center,
+                $f-direct: row, 
+                $f-wrap: wrap
+            );
+
+            list-style-type: none;
+
+            & > .main__container__navigation_item{
+                @include margin($m-t: 2em, $m-b: calc(.6em + .6vw));
+                min-width: 150px;
+                text-align: center;
+
+                & > .main__container__navigation_link{
+                    color: black;
+                    text-decoration: none;
+                    font-family: 'Sansation Light';
+                    font-weight: 100;
+                }
+            }
+        }
+    }
+
+
+}

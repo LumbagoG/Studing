@@ -1,0 +1,56 @@
+.sidebar {
+  display: flex;
+  justify-content: unset;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: unset;
+  flex: unset unset unset;
+  position: fixed;
+  width: calc(3vw + 55px);
+  min-height: 100vh;
+  background-color: #F4F5FA;
+}
+.sidebar__logo {
+  margin: 1vh 0 0 0;
+  flex-grow: 0.3;
+  width: 75%;
+}
+.sidebar__logo_img {
+  width: 100%;
+}
+.sidebar__wrappers-items {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: unset;
+  flex: unset unset unset;
+  flex-grow: 3;
+}
+.sidebar__wrappers-items .active .sidebar__items_img, .sidebar__wrappers-items .active .sidebar__items_link {
+  color: #50667b;
+}
+.sidebar__items {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: unset;
+  flex: unset unset unset;
+  flex-grow: 0.05;
+}
+.sidebar__items_link, .sidebar__items_img {
+  transition: all 0.2s ease-out;
+}
+.sidebar__items_link {
+  color: rgba(80, 102, 123, 0.49);
+  text-decoration: none;
+  font-family: "Sansation Light";
+}
+.sidebar__items_img {
+  color: rgba(80, 102, 123, 0.49);
+  font-size: calc(0.6vw + 1.8rem);
+}
+.sidebar__items:hover > ion-icon, .sidebar__items:hover > a {
+  color: #50667b;
+}

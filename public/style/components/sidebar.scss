@@ -1,0 +1,57 @@
+@import '../mixins/mixin.scss';
+@import '../variables/variables.scss';
+
+.sidebar {
+    @include flex ($f-direct: column, $f-items: center);
+    position: fixed;
+    width: $sidebar-width;
+    min-height: 100vh;
+    background-color: $bg-grey;
+
+    &__logo {
+        @include margin($m-t: 1vh);
+        flex-grow: 0.3;
+        width: 75%;
+
+        &_img {
+            width: 100%;
+        }
+    }
+
+    &__wrappers-items{
+        @include flex($f-direct: column, $f-content: flex-start, $f-items: center);
+        flex-grow: 3;
+
+        .active{
+            .sidebar__items_img, .sidebar__items_link{
+                color: $active-color-sidebar;
+            }
+        }
+    }
+
+    &__items{
+        @include flex($f-direct: column, $f-content: flex-start, $f-items: center);
+        flex-grow: 0.05;
+
+        &_link, &_img{
+            transition: all .2s ease-out;
+        }
+
+        &_link{
+            color: $inactive-color-sidebar;
+            text-decoration: none;
+            font-family: 'Sansation Light';
+        }
+
+        &_img{
+            color: $inactive-color-sidebar;
+            font-size: calc(0.6vw + 1.8rem);
+        }
+
+        &:hover{
+            &>ion-icon, &>a{
+                color: $active-color-sidebar;
+            }
+        }
+    }
+}
