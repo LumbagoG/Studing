@@ -1,16 +1,17 @@
-@import '../mixins/mixin.scss';
-@import '../variables/variables.scss';
+@import "../mixins/mixin.scss";
+@import "../variables/variables.scss";
 
-
-@import '../components/default.scss';
+@import "../components/default.scss";
 
 ul {
     margin-top: 1em !important;
 }
 
-@import '../components/header.scss';
+@import "../components/social.scss";
 
-@import '../components/sidebar.scss';
+@import "../components/header.scss";
+
+@import "../components/sidebar.scss";
 
 .main {
     @include margin($m-l: $sidebar-width);
@@ -27,11 +28,11 @@ ul {
             $f-direct: row
         );
 
-        @include respond-to('large'){
+        @include respond-to("large") {
             @include flex(
                 $f-display: inherit,
-                $f-content: inherit,
-                $f-items: inherit,
+                $f-content: center,
+                $f-items: center,
                 $f-direct: column !important
             );
         }
@@ -49,74 +50,145 @@ ul {
         &_col:first-child {
             flex-grow: 1;
 
-            &>.main__container_title>.main__text_small,
-            &>.main__container_title>.main__text_big {
-                font-family: 'Sansation Light';
+            & > .main__container_title > .main__text_small,
+            & > .main__container_title > .main__text_big {
+                font-family: "Sansation Light";
             }
 
-            &>.main__container_title>.main__text_small {
+            & > .main__container_title > .main__text_small {
                 font-size: calc(0.2vw + 1rem);
                 font-weight: 200 !important;
             }
 
-            &>.main__container_title>.main__text_big {
+            & > .main__container_title > .main__text_big {
                 width: 60%;
                 font-size: calc(0.6vw + 1.6rem);
                 font-weight: 600 !important;
             }
 
-
+            
         }
 
         &_col:last-child {
             flex-grow: 2;
         }
 
-        &_row{
+        &_row {
             @include flex(
                 $f-display: inline-flex,
-                $f-content: flex-start,
+                $f-content: center,
                 $f-items: center,
-                $f-direct: row, 
+                $f-direct: row,
                 $f-wrap: wrap
             );
 
             text-align: center;
 
-            &>.main__container_title>.main__text_small,
-            &>.main__container_title>.main__text_big {
-                font-family: 'Sansation Light';
+            & > .main__container_title > .main__text_small,
+            & > .main__container_title > .main__text_big {
+                font-family: "Sansation Light";
             }
 
-            &>.main__container_title>.main__text_small {
+            & > .main__container_title > .main__text_small {
                 font-size: calc(0.2vw + 1rem);
                 font-weight: 200 !important;
             }
 
-            &>.main__container_title>.main__text_big {
+            & > .main__container_title > .main__text_big {
                 width: 100%;
                 font-size: calc(0.6vw + 1.6rem);
                 font-weight: 600 !important;
-                font-family: 'Roboto';
+                font-family: "Roboto";
                 text-align: center;
             }
 
-            & > .main__container__card{
+            & > .main__container__card {
                 @include flex(
                     $f-display: flex,
                     $f-content: center,
                     $f-items: center,
-                    $f-direct: column, 
+                    $f-direct: column,
                     $f-wrap: nowrap
                 );
 
-                width: 400px;
+                background: #ffffff;
+                border: 1px solid #e5e5e5;
+                box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.05);
+                border-radius: 12px;
+                width: 300px;
+                margin: 2em;
+
+                & > .main__container__card_picture {
+                    width: 100%;
+                    border-radius: 12px;
+
+                    & > img {
+                        width: 100%;
+                        border-radius: 12px 12px 0px 0px;
+                    }
+                }
+
+                & > .main__container__card_category {
+                    margin-top: 1em;
+                }
+
+                & > .main__container__card_description {
+                    & > .main__text_description {
+                        font-weight: 600;
+                    }
+                }
+
+                & > .main__container__card_category,
+                & > .main__container__card_description {
+                    width: 80%;
+                    text-align: left;
+                }
+
+                & > .main__container__card_bottom {
+                    @include flex(
+                        $f-display: inline-flex,
+                        $f-content: space-around,
+                        $f-items: center,
+                        $f-direct: row,
+                        $f-wrap: nowrap
+                    );
+
+                    width: 100%;
+                    margin: 1em 0 1.5em 0;
+
+                    & > .main__container__card_bottom_hours {
+                        @include flex(
+                            $f-display: inline-flex,
+                            $f-content: flex-start,
+                            $f-items: center
+                        );
+
+                        & > ion-icon {
+                            color: #3d8be4;
+                        }
+                    }
+
+                    & > .main__container__card_bottom_show {
+                        & > .button__outline {
+                            text-decoration: none;
+                            padding: 0.4em 0.6em;
+                            border: solid 1px #3d8be4;
+                            color: #3d8be4;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+
+            @include respond-to('small') {
+                & > .main__container__card {
+                    width: 200px !important;
+                }
             }
         }
-
     }
 
-    & .next{
+    & .next {
         @include margin($m-t: calc(5em + 20vh));
         @include flex(
             $f-display: flex,
@@ -129,35 +201,174 @@ ul {
         background-color: $bg-grey;
         padding: calc(2em + 2vh);
 
-        // &_row{
-            
-        // }
-
-        & .main__container__links{
+        & .main__container__links {
             @include flex(
                 $f-display: inline-flex,
                 $f-content: center,
                 $f-items: center,
-                $f-direct: row, 
+                $f-direct: row,
                 $f-wrap: wrap
             );
 
+            @include respond-to("large") {
+                & > .main__container__navigation_item {
+                    min-width: 50px;
+                }
+
+                & {
+                    padding: 0 !important;
+                }
+            }
+
             list-style-type: none;
 
-            & > .main__container__navigation_item{
-                @include margin($m-t: 2em, $m-b: calc(.6em + .6vw));
+            & > .main__container__navigation_item {
+                @include margin($m-t: 2em, $m-b: calc(0.6em + 0.6vw));
                 min-width: 150px;
                 text-align: center;
 
-                & > .main__container__navigation_link{
+                & > .main__container__navigation_link {
                     color: black;
                     text-decoration: none;
-                    font-family: 'Sansation Light';
+                    font-family: "Sansation Light";
                     font-weight: 100;
+                }
+
+                & > .main__container__navigation_link:hover {
+                    border-bottom: solid 1px #3d8be4;
+                }
+
+                & > .active {
+                    color: #3d8be4;
+                    border-bottom: solid 1px #3d8be4;
                 }
             }
         }
     }
 
+    & .advantages {
+        @include flex(
+            $f-display: flex,
+            $f-content: center,
+            $f-items: center,
+            $f-direct: column
+        );
 
+        @include margin($m-t: 5em, $m-b: calc(0.6em + 0.6vw));
+        @include padding($p-t: calc(2em + 2vw), $p-b: calc(2em + 2vw));
+
+        background-color: $bg-grey;
+        width: 100%;
+
+        & .main__container_row {
+            @include flex(
+                $f-display: flex,
+                $f-content: center,
+                $f-items: center,
+                $f-direct: row
+            );
+
+            width: 90%;
+        }
+
+        @include respond-to("large") {
+            & .main__container_row:nth-child(2) {
+                @include flex(
+                    $f-display: flex,
+                    $f-content: center,
+                    $f-items: center,
+                    $f-direct: column
+                );
+            }
+        }
+
+        & .main__container_col {
+            @include flex(
+                $f-display: flex,
+                $f-content: center,
+                $f-items: center,
+                $f-direct: column
+            );
+
+            & > .advantages__item {
+                @include flex(
+                    $f-display: flex,
+                    $f-content: center,
+                    $f-items: center,
+                    $f-direct: row
+                );
+
+                @include margin($m-t: calc(1em + 1vw), $m-b: calc(1em + 1vw));
+
+                width: 80%;
+                text-align: start;
+
+                & > .advantages__item_col:first-child {
+                    align-self: flex-end;
+
+                    margin: 0.9em;
+                }
+
+                &
+                    > .advantages__item_col
+                    > .advantages__item_row
+                    > .main__text_big {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    & .course{
+        @include margin($m-t: calc(3em + 3vw), $m-b: calc(3em + 3vw));
+
+        width: 80%;
+
+        & .main__container_col:first-child{
+            width: 50%;
+            @include margin($m-b: calc(2em + 2vw));
+
+            & > p:nth-child(2){
+                width: 70%;
+                @include margin($m-b: calc(2em + 2vw));
+            }
+
+            & > .main__text_big{
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 500;
+                font-size: calc(1.1em + 1.1vw);
+                line-height: 200%;
+            }
+
+            & > .main__text_small{
+                font-family: 'Sansation Light';
+                font-style: normal;
+                font-weight: 300;
+                font-size: calc(1em + 1vw);
+                line-height: 140%;
+            }
+
+            & > .main__container_col_button{
+                color: #fff;
+                background-color: #3d8be4;
+                text-decoration: none;
+                padding: calc(.5em + .5vw) calc(1em + 1vw);
+                border-radius: 7px;
+            }
+        }
+
+        @include respond-to("large") {
+            & .main__container_col:first-child{
+                width: 80%;
+            }
+
+            & .main__container_col:last-child{
+                width: 90%;
+                float: left;
+            }
+        }
+    }
 }
+
+@import "../components/footer.scss";

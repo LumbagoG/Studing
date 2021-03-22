@@ -1,0 +1,105 @@
+@import "../mixins/mixin.scss";
+@import "../variables/variables.scss";
+
+.footer {
+    @include flex(
+        $f-display: flex,
+        $f-content: center,
+        $f-items: center,
+        $f-direct: column
+    );
+    @include margin($m-t: calc(5em + 5vw));
+    padding: calc(2em + 2vw);
+    width: 100%;
+    background-color: $bg-grey;
+
+    &_row {
+        @include flex(
+            $f-display: flex,
+            $f-content: center,
+            $f-items: center,
+            $f-direct: row
+        );
+        width: 90%;
+        
+
+        & > .footer_col:first-child{
+            @include flex(
+                $f-display: flex,
+                $f-content: center,
+                $f-items: center,
+                $f-direct: column
+            );
+
+            & > a{
+                @include margin($m-t: calc(.5em + .5vw));
+                text-decoration: none;
+                color: #252525;
+            }
+
+            & > a:hover{
+                text-decoration: underline;
+            }
+
+            flex-grow: 3;
+        }
+
+        & > .footer_col:last-child{
+            @include flex(
+                $f-display: flex,
+                $f-content: flex-end,
+                $f-items: center,
+                $f-direct: column
+            );
+
+            & .icons{
+                @include margin($m-b: calc(.6em + .6vw));
+
+                & > ion-icon{
+                    @include margin(
+                        $m-l: calc(.5em + .5vw),
+                        $m-r: calc(.5em + .5vw)
+                    );
+
+                    font-size: calc(0.7vw + 0.7rem);
+                }
+            }
+
+            & > .footer_row{
+                
+
+                & > p{
+                    width: 60%;
+                    text-align: left;
+                }
+            }
+
+            flex-grow: 1;
+            
+        }
+    }
+}
+
+@include respond-to("large") {
+    .footer > .footer_row {
+        @include flex(
+            $f-display: flex,
+            $f-content: flex-end,
+            $f-items: center,
+            $f-direct: column
+        );
+
+        margin-left: 5em;
+
+
+
+        & > .footer_col{
+            @include margin(
+                $m-t: calc(1em + 1vw), 
+                $m-b: calc(1em + 1vw),
+            );
+        }
+
+        
+    }
+}

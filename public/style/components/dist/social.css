@@ -1,0 +1,39 @@
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: unset;
+  flex: unset unset unset;
+  width: 60px;
+  position: fixed;
+  background-color: #F4F5FA;
+  transform: translate(95vw, 10vh);
+  z-index: 100;
+  padding: calc(.5em + .5vh) calc(.2em + .2vw);
+  border-radius: 10px;
+}
+.social_col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: unset;
+  flex: unset unset unset;
+}
+.social_col ion-icon {
+  padding: 5px;
+  font-size: 1.5em;
+  margin: calc(.5em + .5vh) 0 calc(.2em + .2vw) 0;
+  border-bottom: solid 1px #e4e4e4;
+}
+.social_col ion-icon:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+@media (max-width: 1100px) {
+  .social {
+    display: none;
+  }
+}

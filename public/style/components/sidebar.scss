@@ -1,8 +1,8 @@
-@import '../mixins/mixin.scss';
-@import '../variables/variables.scss';
+@import "../mixins/mixin.scss";
+@import "../variables/variables.scss";
 
 .sidebar {
-    @include flex ($f-direct: column, $f-items: center);
+    @include flex($f-direct: column, $f-items: center);
     position: fixed;
     width: $sidebar-width;
     min-height: 100vh;
@@ -18,38 +18,49 @@
         }
     }
 
-    &__wrappers-items{
-        @include flex($f-direct: column, $f-content: flex-start, $f-items: center);
+    &__wrappers-items {
+        @include flex($f-direct: column,
+            $f-content: flex-start,
+            $f-items: center);
         flex-grow: 3;
 
-        .active{
-            .sidebar__items_img, .sidebar__items_link{
+        .active {
+
+            .sidebar__items_img,
+            .sidebar__items_link {
                 color: $active-color-sidebar;
             }
         }
     }
 
-    &__items{
-        @include flex($f-direct: column, $f-content: flex-start, $f-items: center);
-        flex-grow: 0.05;
+    &__items {
+        @include flex($f-direct: column,
+            $f-content: flex-start,
+            $f-items: center);
+        flex-grow: 0.1;
 
-        &_link, &_img{
-            transition: all .2s ease-out;
+        &_link,
+        &_img {
+            transition: all 0.2s ease-out;
         }
 
-        &_link{
+        &_link {
+            position: absolute;
             color: $inactive-color-sidebar;
             text-decoration: none;
-            font-family: 'Sansation Light';
+            font-family: "Sansation Light";
+            margin-top: calc(2vh + 1.5em);
         }
 
-        &_img{
+        &_img {
             color: $inactive-color-sidebar;
             font-size: calc(0.6vw + 1.8rem);
         }
 
-        &:hover{
-            &>ion-icon, &>a{
+        &:hover {
+
+            &>ion-icon,
+            &>a {
                 color: $active-color-sidebar;
             }
         }

@@ -1,0 +1,45 @@
+@import "../mixins/mixin.scss";
+@import "../variables/variables.scss";
+
+.social{
+    @include flex(
+        $f-display: flex,
+        $f-content: center,
+        $f-items: center,
+        $f-direct: column
+    );
+    width: 60px;
+    position: fixed;
+    background-color: $bg-grey;
+    transform: translate(95vw, 10vh);
+    z-index: 100;
+    padding: calc(.5em + .5vh) calc(.2em + .2vw);
+    border-radius: 10px;
+
+    &_col{
+        @include flex(
+            $f-display: flex,
+            $f-content: center,
+            $f-items: center,
+            $f-direct: column
+        );
+
+        & ion-icon{
+            padding: 5px;
+            font-size: 1.5em;
+            margin: calc(.5em + .5vh) 0 calc(.2em + .2vw) 0;
+            border-bottom: solid 1px rgb(228, 228, 228);
+        }
+
+        & ion-icon:hover{
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+    }
+}
+
+@include respond-to("large") {
+    .social{
+        display: none;
+    }
+}
